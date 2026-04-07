@@ -1,0 +1,81 @@
+<?php
+
+declare(strict_types=1);
+
+namespace dbschemix\core\internal\filesystem;
+
+use Iterator;
+use GlobIterator;
+use SplFileInfo;
+use dbschemix\core\exception\ConfigurationException;
+
+/**
+ * @psalm-internal dbschemix\core
+ */
+final readonly class Setup
+{
+    /**
+     * @var non-empty-string
+     */
+    private string $path;
+
+    /**
+     * @param non-empty-string $path
+     * @param non-empty-string $table
+     */
+    public function __construct(
+        string $path,
+        private string $table,
+    ) {
+        $this->path = normalizePath($path);
+    }
+
+    /**
+     * @return Iterator<non-empty-string, non-empty-string>
+     * @throws ConfigurationException if path not exist
+     */
+    public function all(): Iterator
+    {
+        if (file_exists($this->path) === false) {
+            throw new ConfigurationException(
+                sprintf('the directory [%s] does not exist.', $this->path)
+            );
+        }
+
+        /**
+         * @var iterable<SplFileInfo> $iterator
+         */
+        $iterator = new GlobIterator($this->path . '*.sql');
+        foreach ($iterator as $fileInfo) {
+            /** @var non-empty-string $filename */
+            $filename = $fileInfo->getFilename();
+            $queryString = $this->prepareCommand($fileInfo->getPathname());
+            if ($queryString !== null) {
+                yield $filename => $queryString;
+            }
+        }
+    }
+
+    /**
+     * @return non-empty-string|null
+     * @throws ConfigurationException
+     */
+    private function prepareCommand(string $filepath): ?string
+    {
+        if (file_exists($filepath) === false) {
+            throw new ConfigurationException(
+                sprintf('the file [%s] does not exist.', $filepath)
+            );
+        }
+
+        $queryString = file_get_contents($filepath);
+        if ($queryString === '' || $queryString === false) {
+            return null;
+        }
+
+        /**
+         * @var non-empty-string
+         */
+        return str_replace('%SYSTEM_TABLE%', $this->table, $queryString);
+    }
+}

@@ -1,0 +1,65 @@
+<?php
+
+declare(strict_types=1);
+
+namespace internal;
+
+use Override;
+use PHPUnit\Framework\TestCase;
+use dbschemix\core\exception\ConfigurationException;
+use dbschemix\core\internal\filesystem\Action;
+
+final class FilesCreateTest extends TestCase
+{
+    public function testCreate(): void
+    {
+        $fs = new Action(dirname(__DIR__) . '/migration/postgres/main/   ');
+
+        $filepath = $fs->create('test.sql', 'body');
+        self::assertEquals('test.sql', basename($filepath));
+    }
+
+    public function testDirNotWritable(): void
+    {
+        $fs = new Action('/var/run');
+
+        $this->expectException(ConfigurationException::class);
+        $this->expectExceptionMessageMatches('/^the dir .+ is not writable or does not exist.$/i');
+
+        $fs->create('test.sql', 'body');
+    }
+
+    public function testDirNotExists(): void
+    {
+        $fs = new Action('/not-exists');
+
+        $this->expectException(ConfigurationException::class);
+        $this->expectExceptionMessageMatches('/^the dir .+ is not writable or does not exist.$/i');
+
+        $fs->create('test.sql', 'body');
+    }
+
+    public function testConfigurationException(): void
+    {
+        $fs = new Action(dirname(__DIR__) . '/migration/postgres/main');
+        $fs->create('test.sql', 'body');
+
+        $this->expectException(ConfigurationException::class);
+        $this->expectExceptionMessageMatches('/^the file .+ is exist.$/i');
+
+        $fs->create('test.sql', 'body');
+    }
+
+    #[Override]
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        $pattern = dirname(__DIR__) . '/migration/postgres/main/*test.sql';
+        foreach (glob($pattern) ?: [] as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
+}
