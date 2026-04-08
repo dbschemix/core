@@ -7,7 +7,7 @@ namespace dbschemix\core\internal\filesystem;
 use dbschemix\core\InputOptions;
 
 /**
- * @psalm-internal dbschemix\core
+ * @psalm-internal dbschemix\core\internal
  */
 final readonly class Options
 {

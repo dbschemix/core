@@ -10,7 +10,7 @@ use RegexIterator;
 use dbschemix\core\exception\ConfigurationException;
 
 /**
- * @psalm-internal dbschemix\core
+ * @psalm-internal dbschemix\core\internal
  */
 final readonly class Action
 {

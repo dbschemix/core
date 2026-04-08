@@ -25,6 +25,9 @@ final readonly class Context
         assert($this->version >= 0);
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function getName(): string
     {
         return $this->dbName . '/' . $this->filename;
