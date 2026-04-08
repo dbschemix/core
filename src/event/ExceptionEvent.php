@@ -9,6 +9,9 @@ use Throwable;
 
 final readonly class ExceptionEvent implements EventInterface
 {
+    /**
+     * @param non-empty-string $dbName
+     */
     public function __construct(
         public string $dbName,
         public Throwable $exception,
@@ -24,6 +27,9 @@ final readonly class ExceptionEvent implements EventInterface
     #[Override]
     public function getMessage(): string
     {
+        /**
+         * @var non-empty-string
+         */
         return $this->exception->getMessage();
     }
 }

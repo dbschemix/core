@@ -67,7 +67,7 @@ fix: ## run fix tools
 
 check: ## run analysis tools
 	make phpcs
-	make pslam
+	make psalm
 	make phpstan
 
 infection:
