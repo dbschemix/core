@@ -32,7 +32,8 @@
       "dbschemix\\core\\": "src"
     },
     "files": [
-      "src/internal/filesystem/functions.php"
+      "src/internal/filesystem/functions.php",
+      "src/internal/functions.php"
     ]
   },
   "autoload-dev": {

@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-namespace dbschemix\core\internal\action;
+namespace dbschemix\core\command;
 
 use Override;
 use Throwable;
-use dbschemix\core\command\CommandInterface;
-use dbschemix\core\command\Options;
 use dbschemix\core\connection\ConnectionInterface;
 use dbschemix\core\Config;
 use dbschemix\core\Context;
 
 /**
- * @psalm-internal dbschemix\core
+ * @psalm-internal dbschemix
  */
 final readonly class Command implements CommandInterface
 {
