@@ -12,10 +12,6 @@ use dbschemix\core\Config;
 
 final readonly class TestDriverError implements DriverInterface
 {
-    public function __construct()
-    {
-    }
-
     #[Override]
     public function getName(): string
     {
