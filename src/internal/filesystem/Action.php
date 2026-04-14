@@ -64,7 +64,7 @@ final readonly class Action
     public function down(array $listApplied, Options $options = new Options()): Iterator
     {
         $iternum = 0;
-        foreach ($listApplied as $filename => $_) {
+        foreach (array_keys($listApplied) as $filename) {
             if ($options->limit > 0 && $iternum >= $options->limit) {
                 return;
             }

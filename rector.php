@@ -6,7 +6,8 @@
 
 declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
+use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
+use Rector\Set\ValueObject\SetList;
 
 return Rector\Config\RectorConfig::configure()
     ->withPaths(
@@ -17,9 +18,17 @@ return Rector\Config\RectorConfig::configure()
     )
     ->withParallel()
     ->withCache('/tmp/var/rector')
-    ->withPhpSets()
-    ->withRules(
+    ->withPhpSets(php83: true)
+    ->withSets(
         [
-            InlineConstructorDefaultToPropertyRector::class,
+            SetList::CODE_QUALITY,
+            SetList::DEAD_CODE,
+            SetList::PRIVATIZATION,
+            SetList::TYPE_DECLARATION_DOCBLOCKS,
+        ]
+    )
+    ->withSkip(
+        [
+            RemoveNonExistingVarAnnotationRector::class,
         ]
     );

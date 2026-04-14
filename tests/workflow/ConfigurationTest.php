@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace dbschemix\core\tests\workflow;
 
-use dbschemix\core\tests\stub\TestDriverError;
 use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use dbschemix\core\exception\ConnectionException;
 use dbschemix\core\exception\ConfigurationException;
 use dbschemix\core\exception\InitializationException;
+use dbschemix\core\tests\stub\TestDriverError;
 use dbschemix\core\tests\stub\TestDriver;
 use dbschemix\core\tests\stub\TestStorage;
 use dbschemix\core\tests\MigratorFactory;
