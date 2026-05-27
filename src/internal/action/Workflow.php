@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace dbschemix\core\internal\action;
 
+use Closure;
 use Throwable;
 use DateTimeImmutable;
 use Iterator;
@@ -253,10 +254,10 @@ final readonly class Workflow
     }
 
     /**
-     * @param callable(Context $context):bool $handler
+     * @param Closure(Context $context):bool $handler
      * @throws ActionException
      */
-    private function run(callable $handler, Context $context, EventAction $action): void
+    private function run(Closure $handler, Context $context, EventAction $action): void
     {
         try {
             $handler($context);
@@ -275,11 +276,11 @@ final readonly class Workflow
     }
 
     /**
-     * @param callable(filesystem\Action):Iterator<non-empty-string, non-empty-string> $handler
+     * @param Closure(filesystem\Action):Iterator<non-empty-string, non-empty-string> $handler
      * @return iterable<non-empty-string, non-empty-string>
      * @throws ConfigurationException
      */
-    private function iteratorHandler(Migration $migration, callable $handler, bool $useException = true): iterable
+    private function iteratorHandler(Migration $migration, Closure $handler, bool $useException = true): iterable
     {
         try {
             $iterator = $handler(new filesystem\Action($migration->path));
