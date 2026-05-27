@@ -7,6 +7,9 @@ namespace dbschemix\core\exception;
 use Throwable;
 use dbschemix\core\connection\DriverInterface;
 
+/**
+ * @api
+ */
 final class ConnectionException extends MigratorException
 {
     public function __construct(DriverInterface $driver, Throwable $previous)

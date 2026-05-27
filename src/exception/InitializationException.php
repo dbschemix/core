@@ -6,6 +6,9 @@ namespace dbschemix\core\exception;
 
 use Throwable;
 
+/**
+ * @api
+ */
 final class InitializationException extends MigratorException
 {
     public function __construct(string $message, Throwable $previous)
