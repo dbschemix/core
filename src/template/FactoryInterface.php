@@ -15,5 +15,8 @@ interface FactoryInterface
      */
     public function makeName(string $name): string;
 
+    /**
+     * @return non-empty-string
+     */
     public function makeBody(): string;
 }
