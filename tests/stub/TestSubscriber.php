@@ -17,6 +17,9 @@ final class TestSubscriber implements EventSubscriberInterface
      */
     private array $storage = [];
 
+    /**
+     * @return list<Subscription>
+     */
     #[Override]
     public function subscriptions(): array
     {

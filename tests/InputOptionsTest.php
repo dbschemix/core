@@ -125,7 +125,8 @@ final class InputOptionsTest extends TestCase
         self::assertSame('mainDb', $next->dbName);
         self::assertSame('add_users', $next->migrationName);
 
-        // private flags: hasRepeatable preserved; applyLatestVersion dropped — withExactlyAll forwards hasRepeatable but not applyLatestVersion
+        // private flags: hasRepeatable preserved; applyLatestVersion dropped
+        // — withExactlyAll forwards hasRepeatable but not applyLatestVersion
         // hasRepeatable: true forwarded, but dryRun=true so hasRepeatable() returns false
         self::assertFalse($next->hasRepeatable());
         // applyLatestVersion dropped + version=42 makes it false anyway

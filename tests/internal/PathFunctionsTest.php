@@ -73,7 +73,11 @@ final class PathFunctionsTest extends TestCase
         yield 'path with trailing slash' => ['/var/m/', 'file.sql', '/var/m/file.sql'];
         yield 'path with multiple trailing slashes' => ['/var/m///', 'file.sql', '/var/m/file.sql'];
         yield 'whitespace in path stripped' => ['  /var/m  ', 'file.sql', '/var/m/file.sql'];
-        yield 'filename with timestamp prefix' => ['/var/m', '202501011024_entity.sql', '/var/m/202501011024_entity.sql'];
+        yield 'filename with timestamp prefix' => [
+            '/var/m',
+            '202501011024_entity.sql',
+            '/var/m/202501011024_entity.sql',
+        ];
     }
 
     /**
