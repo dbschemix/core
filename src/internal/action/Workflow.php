@@ -40,7 +40,6 @@ final readonly class Workflow
      * @throws ConfigurationException If the driver is not implemented
      * @throws ConnectionException
      * @throws InitializationException
-     * @psalm-suppress MissingThrowsDocblock new Options() with defaults can never throw.
      */
     public function up(Migration $migration, InputOptions $options): int
     {
@@ -243,7 +242,6 @@ final readonly class Workflow
     /**
      * @return non-negative-int
      * @throws InitializationException
-     * @psalm-suppress MissingThrowsDocblock new Options(limit: 1) with literal non-negative arg can never throw.
      */
     private function getLastVersion(Migration $migration, CommandInterface $command): int
     {
