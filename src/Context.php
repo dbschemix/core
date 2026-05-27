@@ -37,7 +37,7 @@ final readonly class Context
             throw new InvalidArgumentException('query must be a non-empty string.');
         }
         if ($version < 0) {
-            throw new InvalidArgumentException("version must be non-negative, got {$version}.");
+            throw new InvalidArgumentException("version must be non-negative, got $version.");
         }
     }
 

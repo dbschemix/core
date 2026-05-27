@@ -31,10 +31,10 @@ final readonly class InputOptions
         private bool $applyLatestVersion = false,
     ) {
         if ($limit < 0) {
-            throw new InvalidArgumentException("limit must be non-negative, got {$limit}.");
+            throw new InvalidArgumentException("limit must be non-negative, got $limit.");
         }
         if ($version < 0) {
-            throw new InvalidArgumentException("version must be non-negative, got {$version}.");
+            throw new InvalidArgumentException("version must be non-negative, got $version.");
         }
         if ($dbName === '') {
             throw new InvalidArgumentException('dbName must be null or a non-empty string.');

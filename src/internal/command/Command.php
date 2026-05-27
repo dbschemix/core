@@ -39,20 +39,11 @@ final readonly class Command implements CommandInterface
             $limit = 'LIMIT ' . $options->limit;
         }
 
-        /** @var non-empty-string $query */
-        $query = str_replace(
-            [
-                ':table',
-                '[WHERE]',
-                '[LIMIT]',
-            ],
-            [
-                $this->config->table,
-                $where,
-                $limit,
-            ],
-            'SELECT name, version FROM :table [WHERE] ORDER BY atime DESC, name DESC [LIMIT]',
-        );
+        $query = 'SELECT name, version FROM '
+            . $this->config->table
+            . ($where !== '' ? ' ' . $where : '')
+            . ' ORDER BY atime DESC, name DESC'
+            . ($limit !== '' ? ' ' . $limit : '');
 
         return $this->connection->fetchRecord($query, $params);
     }
