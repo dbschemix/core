@@ -16,13 +16,13 @@ function normalizePath(string $path): string
 
 /**
  * @param non-empty-string $path
- * @param non-empty-string $postfix
+ * @param non-empty-string $suffix
  * @return non-empty-string
  * @infection-ignore-all
  */
-function joinBasename(string $path, string $postfix): string
+function joinSuffix(string $path, string $suffix): string
 {
-    return rtrim(trim($path), '/') . rtrim($postfix, '/') . '/';
+    return rtrim(trim($path), '/') . rtrim($suffix, '/') . '/';
 }
 
 /**

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace dbschemix\core\connection;
 
+/**
+ * @api
+ */
 interface TransactionInterface extends StatementInterface
 {
     public function isActive(): bool;

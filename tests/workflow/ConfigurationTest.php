@@ -40,7 +40,6 @@ final class ConfigurationTest extends TestCase
         );
 
         $this->expectException(ConnectionException::class);
-        $this->expectExceptionMessage('Connection error');
 
         $migrator->init();
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace dbschemix\core;
 
 /**
+ * @api
  * @infection-ignore-all IncrementInteger
  */
 final readonly class Context

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace dbschemix\core\internal;
+namespace dbschemix\core\package;
 
 use OutOfBoundsException;
 use Composer\InstalledVersions;
@@ -13,7 +13,7 @@ use Composer\InstalledVersions;
  * @return non-empty-string
  * @throws OutOfBoundsException of package is not installed
  */
-function get_package_version(string $package): string
+function version(string $package): string
 {
     /**
      * @var array<non-empty-string, non-empty-string> $versions
@@ -42,7 +42,7 @@ function get_package_version(string $package): string
  * @return non-empty-string
  * @throws OutOfBoundsException of package is not installed
  */
-function get_package_path(string $package): string
+function path(string $package): string
 {
     $packagePath = InstalledVersions::getInstallPath($package);
 

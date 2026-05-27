@@ -7,6 +7,9 @@ namespace dbschemix\core\event;
 use Override;
 use dbschemix\core\Context;
 
+/**
+ * @api
+ */
 final readonly class MigrateSuccessEvent implements EventInterface
 {
     /**

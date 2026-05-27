@@ -85,7 +85,7 @@ final readonly class Action
     public function fixture(Options $options = new Options()): Iterator
     {
         $iternum = 0;
-        foreach ($this->makeIterator(joinBasename($this->path, '-fixture')) as $matchFilename) {
+        foreach ($this->makeIterator(joinSuffix($this->path, '-fixture')) as $matchFilename) {
             if ($options->limit > 0 && $iternum >= $options->limit) {
                 return;
             }
@@ -107,7 +107,7 @@ final readonly class Action
      */
     public function repeatable(): Iterator
     {
-        foreach ($this->makeIterator(joinBasename($this->path, '-repeatable')) as $matchFilename) {
+        foreach ($this->makeIterator(joinSuffix($this->path, '-repeatable')) as $matchFilename) {
             $filepath = $matchFilename[0];
             $command = $this->prepareCommand($filepath, ActionType::UP);
             if ($command !== null) {

@@ -11,5 +11,4 @@ enum ActionType: string
 {
     case UP = 'up';
     case DOWN = 'down';
-    case SKIP = 'skip';
 }

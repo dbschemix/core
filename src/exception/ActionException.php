@@ -6,6 +6,9 @@ namespace dbschemix\core\exception;
 
 use Throwable;
 
+/**
+ * @api
+ */
 final class ActionException extends MigratorException
 {
     public function __construct(string $filename, Throwable $previous)

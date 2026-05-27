@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace dbschemix\core\template;
 
+/**
+ * @api
+ */
 interface FactoryInterface
 {
     /**
@@ -12,5 +15,8 @@ interface FactoryInterface
      */
     public function makeName(string $name): string;
 
+    /**
+     * @return non-empty-string
+     */
     public function makeBody(): string;
 }

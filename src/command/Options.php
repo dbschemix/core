@@ -6,6 +6,9 @@ namespace dbschemix\core\command;
 
 use dbschemix\core\InputOptions;
 
+/**
+ * @api
+ */
 final readonly class Options
 {
     /**
