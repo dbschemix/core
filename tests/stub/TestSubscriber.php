@@ -8,6 +8,7 @@ use Override;
 use dbschemix\core\event\Event;
 use dbschemix\core\event\EventInterface;
 use dbschemix\core\event\EventSubscriberInterface;
+use dbschemix\core\event\Subscription;
 
 final class TestSubscriber implements EventSubscriberInterface
 {
@@ -21,13 +22,9 @@ final class TestSubscriber implements EventSubscriberInterface
     {
         $subscriptions = [];
         foreach (Event::cases() as $event) {
-            $subscriptions[$event->value] = $this->set(...);
+            $subscriptions[] = new Subscription($event, $this->set(...));
         }
 
-        /**
-         * @var non-empty-array<string, callable(Event $name, EventInterface $event):void> $subscriptions
-         * @phpstan-ignore varTag.nativeType
-         */
         return $subscriptions;
     }
 

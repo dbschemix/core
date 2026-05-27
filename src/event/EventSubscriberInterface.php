@@ -10,7 +10,7 @@ namespace dbschemix\core\event;
 interface EventSubscriberInterface
 {
     /**
-     * Returns a map of event name (Event::value) to callback.
+     * Returns the list of (event, callback) subscriptions this subscriber wants.
      *
      * Subscriber callbacks MUST NOT throw. If a callback throws, the library
      * reports the failure via trigger_error(E_USER_WARNING) and continues:
@@ -18,7 +18,7 @@ interface EventSubscriberInterface
      * aborted. Subscribers that need to react to their own failures must
      * wrap their body in their own try/catch.
      *
-     * @return array<string, callable(Event $name, EventInterface $event):void>
+     * @return list<Subscription>
      */
     public function subscriptions(): array;
 }

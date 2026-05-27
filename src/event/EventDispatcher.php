@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace dbschemix\core\event;
 
+use Closure;
 use Throwable;
 
 /**
@@ -12,7 +13,7 @@ use Throwable;
 final readonly class EventDispatcher
 {
     /**
-     * @var array<string, list<callable(Event $name, EventInterface $event):void>>
+     * @var array<string, list<Closure(Event $name, EventInterface $event):void>>
      */
     private array $eventHandlers;
 
@@ -23,8 +24,8 @@ final readonly class EventDispatcher
     {
         $subscriptions = [];
         foreach ($eventSubscribers as $subscriber) {
-            foreach ($subscriber->subscriptions() as $name => $callback) {
-                $subscriptions[$name][] = $callback;
+            foreach ($subscriber->subscriptions() as $subscription) {
+                $subscriptions[$subscription->event->value][] = $subscription->callback;
             }
         }
 
