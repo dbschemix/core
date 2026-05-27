@@ -41,6 +41,9 @@ final readonly class Migrator implements MigratorInterface
         }
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions and withers operate on validated state.
+     */
     #[Override]
     public function create(InputOptions $args = new InputOptions()): void
     {
@@ -61,6 +64,9 @@ final readonly class Migrator implements MigratorInterface
         }
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions operates on validated state.
+     */
     #[Override]
     public function up(InputOptions $args = new InputOptions()): void
     {
@@ -69,6 +75,9 @@ final readonly class Migrator implements MigratorInterface
         }
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions operates on validated state.
+     */
     #[Override]
     public function down(InputOptions $args = new InputOptions()): void
     {
@@ -77,6 +86,9 @@ final readonly class Migrator implements MigratorInterface
         }
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions operates on validated state.
+     */
     #[Override]
     public function fixture(InputOptions $args = new InputOptions()): void
     {
@@ -85,6 +97,9 @@ final readonly class Migrator implements MigratorInterface
         }
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions and withers operate on validated state.
+     */
     #[Override]
     public function redo(InputOptions $args = new InputOptions()): void
     {
@@ -92,6 +107,9 @@ final readonly class Migrator implements MigratorInterface
         $this->up($args->withResetLimit());
     }
 
+    /**
+     * @psalm-suppress MissingThrowsDocblock Default InputOptions and withers operate on validated state.
+     */
     #[Override]
     public function verify(InputOptions $args = new InputOptions()): void
     {

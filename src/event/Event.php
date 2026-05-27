@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace dbschemix\core\event;
 
+/**
+ * @api
+ */
 enum Event: string
 {
     case InitializationError = 'initialization-error-event';

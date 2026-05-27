@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace dbschemix\core\template;
+namespace dbschemix\core\internal\template;
 
 use Override;
+use dbschemix\core\template\FactoryInterface;
 
 /**
  * @psalm-internal dbschemix\core

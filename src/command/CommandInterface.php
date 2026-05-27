@@ -7,6 +7,9 @@ namespace dbschemix\core\command;
 use Throwable;
 use dbschemix\core\Context;
 
+/**
+ * @api
+ */
 interface CommandInterface
 {
     /**

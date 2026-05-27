@@ -8,6 +8,9 @@ use Override;
 use Throwable;
 use dbschemix\core\Context;
 
+/**
+ * @api
+ */
 final readonly class MigrateErrorEvent implements EventInterface
 {
     /**

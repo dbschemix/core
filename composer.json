@@ -33,7 +33,7 @@
     },
     "files": [
       "src/internal/filesystem/functions.php",
-      "src/internal/functions.php"
+      "src/package/functions.php"
     ]
   },
   "autoload-dev": {

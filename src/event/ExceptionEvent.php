@@ -7,6 +7,9 @@ namespace dbschemix\core\event;
 use Override;
 use Throwable;
 
+/**
+ * @api
+ */
 final readonly class ExceptionEvent implements EventInterface
 {
     /**

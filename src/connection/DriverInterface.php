@@ -8,6 +8,9 @@ use dbschemix\core\command\CommandInterface;
 use dbschemix\core\exception\ConnectionException;
 use dbschemix\core\Config;
 
+/**
+ * @api
+ */
 interface DriverInterface
 {
     /**
